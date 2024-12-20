@@ -9,8 +9,8 @@ const ChatArea = ({ data, streamdiv, answer }) => {
     <div className="chat-area">
       {data?.length <= 0 ? (
         <div className="welcome-area">
-          <p className="welcome-1">Hi,</p>
-          <p className="welcome-2">How can I help you today?</p>
+          <p className="welcome-1">Hello Chef!</p>
+          <p className="welcome-2">What can I help you cook today?</p>
         </div>
       ) : (
         <div className="welcome-area" style={{display: "none"}}></div>

@@ -75,8 +75,9 @@ body {
 .chat-app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   width: 45vw;
+  padding: 20px;
 }
 
 .chat-area {
@@ -211,6 +212,10 @@ body {
   flex-grow: 1;
 }
 
+.title {
+  padding: 10px;
+}
+
 .toggle-btn {
  background-color: rgb(134, 167, 196);
  border: 1px solid #aaa;
@@ -272,14 +277,14 @@ body {
 
 .welcome-1 {
   text-align: left;
-  font-size: 3.2em;
+  font-size: 2.3em;
   font-weight: bold;
   color: #b7b3ab;
 }
 
 .welcome-2 {
   text-align: left;
-  font-size: 3.2em;
+  font-size: 2.3em;
   font-weight: bold;
   color: #b7b3ab;
 }

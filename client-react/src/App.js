@@ -70,7 +70,9 @@ function App() {
   const handleStreamingChat = async () => {
     /** Prepare POST request data. */
     const chatData = {
-      chat: inputRef.current.value,
+      chat: `You're a helpful cooking assistant. If the prompt is not related to recipes and cooking, do not answer \
+      the prompt and tell the user to submit a cooking-related prompt instead. Answer the following in a culinary context: ${inputRef.current.value}. \
+      Respond like a nice version of Gordon Ramsey.`,
       history: data
     };
 
@@ -167,6 +169,7 @@ function App() {
 
   return (
     <center>
+      <h1 className='title'>Chef GPT</h1>
       <div className="chat-app">
         <ConversationDisplayArea data={data} streamdiv={streamdiv} answer={answer} />
         <MessageInput inputRef={inputRef} waiting={waiting} handleClick={handleClick} />
