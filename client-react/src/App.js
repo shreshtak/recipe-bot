@@ -23,7 +23,6 @@ import './App.css';
 
 /** Import necessary components. */
 import ConversationDisplayArea from './components/ConversationDisplayArea.js';
-import Header from './components/Header.js';
 import MessageInput from './components/MessageInput.js';
 
 function App() {
@@ -31,8 +30,6 @@ function App() {
   const inputRef = useRef();
   /** Host URL */
   const host = "http://localhost:9000"
-  /** URL for non-streaming chat. */
-  const url = host + "/chat";
   /** URL for streaming chat. */
   const streamUrl = host + "/stream";
   /** State variable for message history. */
@@ -41,18 +38,11 @@ function App() {
   const [answer, setAnswer] = useState("")
   /** State variable to show/hide temporary streaming block. */
   const [streamdiv, showStreamdiv] = useState(false);
-  /** State variable to toggle between streaming and non-streaming response. */
-  const [toggled, setToggled] = useState(false);
   /** 
    * State variable used to block the user from inputting the next message until
    * the previous conversation is completed.
    */
   const [waiting, setWaiting] = useState(false);
-  /** 
-   * `is_stream` checks whether streaming is on or off based on the state of 
-   * toggle button.
-   */
-  const is_stream = toggled;
 
   /** Function to scroll smoothly to the top of the mentioned checkpoint. */
   function executeScroll() {
@@ -72,78 +62,8 @@ function App() {
     if (validationCheck(inputRef.current.value)) {
       console.log("Empty or invalid entry");
     } else {
-      if (!is_stream) {
-        /** Handle non-streaming chat. */
-        handleNonStreamingChat();
-      } else {
-        /** Handle streaming chat. */
-        handleStreamingChat();
-      }
+      handleStreamingChat();
     }
-  };
-
-  /** Handle non-streaming chat. */
-  const handleNonStreamingChat = async () => {
-    /** Prepare POST request data. */
-    const chatData = {
-      chat: inputRef.current.value,
-      history: data
-    };
-
-    /** Add current user message to history. */
-    const ndata = [...data,
-      {"role": "user", "parts":[{"text": inputRef.current.value}]}]
-
-    /**
-     * Re-render DOM with updated history.
-     * Clear the input box and temporarily disable input.
-     */
-    flushSync(() => {
-        setData(ndata);
-        inputRef.current.value = ""
-        inputRef.current.placeholder = "Waiting for model's response"
-        setWaiting(true)
-    });
-
-    /** Scroll to the new user message. */
-    executeScroll();
-
-    /** Headers for the POST request. */
-    let headerConfig = {
-      headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          "Access-Control-Allow-Origin": "*",
-      }
-    };
-
-    /** Function to perform POST request. */
-    const fetchData = async() => {
-      var modelResponse = ""
-      try {
-        const response = await axios.post(url, chatData, headerConfig);
-        modelResponse = response.data.text
-      } catch (error) {
-        modelResponse = "Error occurred";
-      }finally {
-        /** Add model response to the history. */
-        const updatedData = [...ndata,
-          {"role": "model", "parts":[{"text": modelResponse}]}]
-
-        /**
-         * Re-render DOM with updated history.
-         * Enable input.
-         */
-        flushSync(() => {
-          setData(updatedData);
-          inputRef.current.placeholder = "Enter a message."
-          setWaiting(false)
-        });
-        /** Scroll to the new model response. */
-        executeScroll();
-      }
-    };
-
-    fetchData();
   };
 
   /** Handle streaming chat. */
@@ -248,7 +168,6 @@ function App() {
   return (
     <center>
       <div className="chat-app">
-        <Header toggled={toggled} setToggled={setToggled} />
         <ConversationDisplayArea data={data} streamdiv={streamdiv} answer={answer} />
         <MessageInput inputRef={inputRef} waiting={waiting} handleClick={handleClick} />
       </div>

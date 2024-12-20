@@ -4,16 +4,12 @@
 
 - [Intro](#intro)
 - [Installation](#installation)
-  - [(Option 1) Node.js installation](#option-1-nodejs-installation)
-  - [(Option 2) Python installation](#option-2-python-installation)
-  - [(Option 3) Go installation](#option-3-go-installation)
+  - [Python installation](#option-2-python-installation)
 - [Run the app](#run-the-app)
   - [Run the React client](#run-the-react-client)
   - [Run a backend server](#run-a-backend-server)
     - [Get an API key](#get-an-api-key)
-    - [(Option 1) Configure and run the Node.js backend](#option-1-configure-and-run-the-nodejs-backend)
-    - [(Option 2) Configure and run the Python backend](#option-2-configure-and-run-the-python-backend)
-    - [(Option 3) Configure and run the Go backend](#option-3-configure-and-run-the-go-backend)
+    - [Configure and run the Python backend](#option-2-configure-and-run-the-python-backend)
 - [Usage](#usage)
 - [API documentation](#api-documentation)
 
@@ -54,16 +50,7 @@ than one, keep in mind that they all default to running on the same port.
 Follow the installation instructions for one of the backend servers (Node.js,
 Python, or Go).
 
-### (Option 1) Node.js installation
-
-Before running the installation steps, make sure that Node.js v18+ and npm are
-installed in your development environment.
- 
-1. Navigate to the app directory, `server-js` (i.e. where `package.json` is
-   located).
-2. Run `npm install`.
-
-### (Option 2) Python installation
+### Python installation
 
 Before running the installation steps, make sure that Python 3.9+ is installed
 in your development environment. Then navigate to the app directory,
@@ -93,17 +80,6 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-### (Option 3) Go installation
-
-Check if Go 1.20+ is installed on your system.
-
-```
-go version
-```
-
-If Go 1.20+ is not installed, follow the instructions for your operating system
-from the [Go installation guide](https://go.dev/doc/install). The backend
-dependencies will be installed when you run the app.
 
 ## Run the app
 
@@ -136,38 +112,7 @@ don't already have one, create a key with one click in Google AI Studio.
 
 <a class=button button-primary href=https://ai.google.dev/gemini-api/docs/api-key target=_blank rel=noopener noreferrer>Get an API key</a>
 
-#### (Option 1) Configure and run the Node.js backend
-
-Configure the Node.js app:
-
-1. Navigate to the app directory, `server-js/`.
-2. Copy the `.env.example` file to `.env`.
-   ```
-   cp .env.example .env
-   ```
-3. Specify the Gemini API key for the variable `GOOGLE_API_KEY` in the `.env`
-   file.
-   ```
-   GOOGLE_API_KEY=<your_api_key>
-   ```
-
-Run the Node.js app:
-
-```
-node --env-file=.env app.js
-```
-
-`--env-file=.env` tells Node.js where the .env file is located.
-
-By default, the app will run on port 9000.
-
-To specify a custom port, edit the `PORT` key in your `.env` file,
-`PORT=xxxx`.
-
-**Note:** In case of a custom port, you must update the host URL specified in
-`client-react/src/App.js`.
-
-#### (Option 2) Configure and run the Python backend
+#### Configure and run the Python backend
 
 Configure the Python app:
 
@@ -192,21 +137,6 @@ Run the Python app:
 python app.py
 ```
 The server will start on `localhost:9000`.
-
-#### (Option 3) Configure and run the Go backend
-
-1. Navigate to the app directory, `server-go` (i.e. where main.go is located).
-2. Run the application with the following command, replacing `<your_api_key>`
-   with your API key.
-   ```
-   GOOGLE_API_KEY=<your_api_key> go run .
-   ```
-
-The server will start on `localhost:9000`.
-
-By default, the server starts on port 9000. You can override the default port
-the server listens on by setting the environment variable `PORT` in the command
-above.
 
 ## Usage
 
