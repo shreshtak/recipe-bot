@@ -13,18 +13,6 @@
 - [Usage](#usage)
 - [API documentation](#api-documentation)
 
-## Intro
-
-This example app lets the user chat with the Gemini API and use it as a personal
-AI assistant. The app supports text-only chat in two modes: non-streaming and
-streaming.
-
-In non-streaming mode, a response is returned after the model completes the
-entire text generation process.
-
-Streaming mode uses the Gemini API's streaming capability to achieve faster
-interactions.
-
 ### Frontend
 
 The client for this app is written using [React](https://react.dev/) and served
@@ -32,23 +20,10 @@ using [Vite](https://github.com/vitejs/vite).
 
 ### Backend
 
-There are three implementations of the backend server to choose from:
-
-* A Python [Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/)
+A Python [Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/)
   server, which demonstrates the
   [Gemini API Python SDK](https://github.com/google-gemini/generative-ai-python)
-* A Node.js server, which demonstrates the
-  [Gemini API JavaScript SDK](https://github.com/google-gemini/generative-ai-js)
-* A Go server, which demonstrates the
-  [Gemini API Go SDK](https://github.com/google/generative-ai-go)
 
-You only need to install and run *one* of the backends. If you want to try more
-than one, keep in mind that they all default to running on the same port.
-
-## Installation
-
-Follow the installation instructions for one of the backend servers (Node.js,
-Python, or Go).
 
 ### Python installation
 
