@@ -6,20 +6,30 @@ import chatbotIcon from '../assets/chef-icon.png'
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 
+import { ref, push } from "firebase/database";
+import database from '../firebase';
+import { getRecipeTitle } from '../pages/AskChefGPT';
 
 const ChatArea = ({ data, streamdiv, answer }) => {
 
-  const [recipeBook, setRecipeBook] = useState([])
-
-  const saveToRecipeBook = (response) => {
-    // check if the response is a valid recipe
+  const saveToRecipeBook = async (response) => {
     if (isCookingRecipe(response)) {
-      setRecipeBook((prevRecipes) => [...prevRecipes, response]);
+
+      const recipeRef = ref(database, "recipes");
+      const title = await getRecipeTitle(response); 
+  
+      push(recipeRef, {
+        title: title,
+        recipe: response,
+        timestamp: Date.now(),
+      });
+  
       alert("Recipe saved successfully!");
     } else {
       alert("This response is not a valid cooking recipe.");
     }
   };
+  
   
   // helper function to validate a recipe
   const isCookingRecipe = (response) => {

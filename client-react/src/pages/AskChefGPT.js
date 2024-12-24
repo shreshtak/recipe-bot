@@ -10,11 +10,52 @@ import ConversationDisplayArea from '../components/ConversationDisplayArea.js';
 import MessageInput from '../components/MessageInput.js';
 import DropdownMenu from '../components/DropdownMenu.js';
 
+/** Host URL */
+const host = "http://localhost:9000"
+
+/** Function to get the recipe title using Gemini API. */
+export const getRecipeTitle = async (recipe) => {
+  const prompt = `Give me only the name of the dish of this recipe: ${recipe}`;
+
+  const chatData = {
+    chat: prompt,
+    history: []  
+  };
+
+  const headerConfig = {
+    Accept: "application/json, text/plain, */*",
+    "Content-Type": "application/json",
+  };
+
+  const response = await fetch(`${host}/stream`, {
+    method: 'POST',
+    headers: headerConfig,
+    body: JSON.stringify(chatData),
+  });
+
+  if (!response.ok || !response.body) {
+    throw new Error('Failed to fetch recipe title');
+  }
+
+  const reader = response.body.getReader();
+  const txtdecoder = new TextDecoder();
+  let modelResponse = "";
+
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    const decodedText = txtdecoder.decode(value, { stream: true });
+    modelResponse += decodedText;
+  }
+
+  return modelResponse.trim(); 
+};
+
+
+
 const AskChefGPT = () => {
   /** Reference variable for message input button. */
   const inputRef = useRef();
-  /** Host URL */
-  const host = "http://localhost:9000"
   /** URL for streaming chat. */
   const streamUrl = host + "/stream";
   /** State variable for message history. */
@@ -156,24 +197,6 @@ const AskChefGPT = () => {
     fetchStreamData();
   };
 
-  // const saveToRecipeBook = (response) => {
-  //   // check if the response is a valid recipe
-  //   if (isCookingRecipe(response)) {
-  //     setRecipeBook((prevRecipes) => [...prevRecipes, response]);
-  //     alert("Recipe saved successfully!");
-  //   } else {
-  //     alert("This response is not a valid cooking recipe.");
-  //   }
-  // };
-  
-  // // helper function to validate a recipe
-  // const isCookingRecipe = (response) => {
-  //   // check for keywords like "ingredients", "instructions", "cook", etc.
-  //   const recipeKeywords = ["ingredients", "instructions", "cook", "bake", "recipe"];
-  //   return recipeKeywords.some((keyword) => response.toLowerCase().includes(keyword));
-  // };
-
-  
 
   return (
     <div>
