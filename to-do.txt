@@ -1,13 +1,14 @@
 to-do:
 
-- add menu toggle button
-    > chat ("Ask Chef GPT"...?)
-    > "saved recipes" (choose name later)
-- login feature?
-- save recipe feature   
-    > recipe book/cookbool
+- save recipe button
+    > save recipes to recipe book, display recipe book on recipe book page
     > create option to save ai-generated recipe to recipe book 
         - only recipes, not other messages (need validation check for that)
+- login feature
+- save recipe feature 
+
+recipe book:
+- ability to edit entries in the recipe book 
 
 completed:
 
@@ -17,3 +18,6 @@ completed:
 - restrict non-cooking prompts
 - change title font and other styling
 - change general app font
+- add menu toggle button
+    > chat ("Ask Chef GPT"...?)
+    > "saved recipes" (choose name later)

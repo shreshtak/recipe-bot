@@ -1,8 +1,14 @@
 import React from 'react';
+import DropdownMenu from '../components/DropdownMenu';
 
 function RecipeBook() {
   return (
-    <h2>Your Recipe Book</h2>
+    <div>
+      <div>
+      <DropdownMenu />
+      <h1 className='title'>Your Recipe Book</h1>
+      </div>
+    </div>
   ) 
 }
 

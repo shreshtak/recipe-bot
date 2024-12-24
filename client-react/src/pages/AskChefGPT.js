@@ -28,6 +28,10 @@ const AskChefGPT = () => {
    * the previous conversation is completed.
    */
   const [waiting, setWaiting] = useState(false);
+  
+  // stores all saved recipe responses
+  // const [recipeBook, setRecipeBook] = useState([]);
+
 
   /** Function to scroll smoothly to the top of the mentioned checkpoint. */
   function executeScroll() {
@@ -152,6 +156,25 @@ const AskChefGPT = () => {
     fetchStreamData();
   };
 
+  // const saveToRecipeBook = (response) => {
+  //   // check if the response is a valid recipe
+  //   if (isCookingRecipe(response)) {
+  //     setRecipeBook((prevRecipes) => [...prevRecipes, response]);
+  //     alert("Recipe saved successfully!");
+  //   } else {
+  //     alert("This response is not a valid cooking recipe.");
+  //   }
+  // };
+  
+  // // helper function to validate a recipe
+  // const isCookingRecipe = (response) => {
+  //   // check for keywords like "ingredients", "instructions", "cook", etc.
+  //   const recipeKeywords = ["ingredients", "instructions", "cook", "bake", "recipe"];
+  //   return recipeKeywords.some((keyword) => response.toLowerCase().includes(keyword));
+  // };
+
+  
+
   return (
     <div>
       {/* <Routes>
@@ -163,7 +186,11 @@ const AskChefGPT = () => {
       </div>
       <center>
         <div className="chat-app">
-          <ConversationDisplayArea data={data} streamdiv={streamdiv} answer={answer} />
+          <ConversationDisplayArea 
+            data={data} 
+            streamdiv={streamdiv} 
+            answer={answer} 
+          />
           <MessageInput inputRef={inputRef} waiting={waiting} handleClick={handleClick} />
         </div>
       </center>

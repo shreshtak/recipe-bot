@@ -5,6 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { useNavigate } from 'react-router-dom';
 
+import "../App.css"
+
 const DropdownMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -35,6 +37,7 @@ const DropdownMenu = () => {
           marginTop: '10px',
           marginLeft: '10px',
           color: '#1f0202',
+          fontFamily: 'Nunito'
         }}
         onClick={handleClick}
       >

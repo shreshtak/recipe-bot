@@ -54,7 +54,7 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #d1c1c1; 
+  background: #c5c1b9; 
 }
 
 /* Handle on hover */
@@ -111,15 +111,15 @@ body {
   display: flex;
   border: solid 1px #505261;
   background-color: #e9e2de;
-  border-radius: 30px;
+  border-radius: 35px;
   margin-bottom: 25px;
 }
 
 .chat_msg_input {
   flex-grow: 4;
   padding: 5px 5px 5px 45px;
-  height: 50px;
-  font-size: 1.15vw;
+  height: 40px;
+  font-size: 1.3vw;
   border: 0px;
   background-color: transparent;
   color: rgb(31, 2, 2);
@@ -149,6 +149,11 @@ body {
     color: #4991e8;
   }
 
+.MuiMenu-root, .MuiMenuItem-root {
+  font-family: 'Nunito' !important;
+}
+  
+
 .user > img {
   height: 30px; 
   max-width: 30px;
@@ -170,8 +175,8 @@ body {
   }
 
 .model > img {
-  height: 30px; 
-  max-width: 30px;
+  height: 35px; 
+  max-width: 35px;
   border-radius: 50%;
   flex-grow: 1;
   }
@@ -188,29 +193,27 @@ body {
   border: solid 1px #9a9caa;
 }
 
+
 .tempResponse {
-  padding: 5px;
-  margin-right: 2vw;
-  border-radius: 25px;
-  text-align: left;
   display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #c5c1b9;
 }
 
 .tempResponse > p {
-  position: relative;
-  bottom: 3vh;
+  margin-left: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
   font-size: 1em;
-  margin-left: 15px;
-  border-radius: 25px;
-  padding: 0px 15px 0px 15px;
-  background-color: #e0e4e9;
-  color: #000000;
-  border: solid 1px #9a9caa;
+  color: #000000; 
 }
 
 .tempResponse > img {
-  height: 30px; 
-  max-width: 30px;
+  height: 35px; 
+  max-width: 35px;
   border-radius: 50%;
   flex-grow: 1;
 }
@@ -219,7 +222,8 @@ body {
   padding-bottom: 5px;
   font-size: 40px;
   text-align: center;
-  color: #1f0202
+  color: #1f0202;
+  font-weight: 800;
 }
 
 .welcome-1 {
@@ -240,4 +244,52 @@ body {
   color: black;
   position: relative;
   left: 15px;
+}
+
+.chat-bubble {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.chat-bubble.user {
+  justify-content: flex-start;
+  background-color: #e5e0d5;
+  border-radius: 10px;
+}
+
+.chat-bubble.model {
+  justify-content: flex-start;
+  background-color: #c5c1b9;
+  border-radius: 10px;
+}
+
+.message-content {
+  margin-left: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.save-recipe-container {
+  margin-top: 10px; /* Adds space between the message and button */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.save-recipe-button {
+  background-color: #e5e0d5;
+  color: black;
+  border: none;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-recipe-button:hover {
+  background-color: #dcd7cd;
 }
