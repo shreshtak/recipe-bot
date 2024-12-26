@@ -51,7 +51,42 @@ export const getRecipeTitle = async (recipe) => {
   return modelResponse.trim(); 
 };
 
+export const getRecipeDescription = async (recipe) => {
+  const prompt = `Give a one sentence enthusastic description of this dish: ${recipe}`;
 
+  const chatData = {
+    chat: prompt,
+    history: []  
+  };
+
+  const headerConfig = {
+    Accept: "application/json, text/plain, */*",
+    "Content-Type": "application/json",
+  };
+
+  const response = await fetch(`${host}/stream`, {
+    method: 'POST',
+    headers: headerConfig,
+    body: JSON.stringify(chatData),
+  });
+
+  if (!response.ok || !response.body) {
+    throw new Error('Failed to fetch recipe title');
+  }
+
+  const reader = response.body.getReader();
+  const txtdecoder = new TextDecoder();
+  let modelResponse = "";
+
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    const decodedText = txtdecoder.decode(value, { stream: true });
+    modelResponse += decodedText;
+  }
+
+  return modelResponse.trim(); 
+}
 
 const AskChefGPT = () => {
   /** Reference variable for message input button. */
@@ -101,8 +136,8 @@ const AskChefGPT = () => {
     /** Prepare POST request data. */
     const chatData = {
       chat: `You're a helpful cooking assistant. If the prompt is not related to recipes and cooking, do not answer \
-      the prompt and tell the user to submit a cooking-related prompt instead. Answer the following in a culinary context: ${inputRef.current.value}. \
-      Respond like a nice version of Gordon Ramsey.`,
+      the prompt and tell the user to submit a cooking-related prompt instead. Answer the following in a culinary context: \
+      ${inputRef.current.value}. Respond in a friendly tone, while using professional cooking terminology.`,
       history: data
     };
 
@@ -200,9 +235,6 @@ const AskChefGPT = () => {
 
   return (
     <div>
-      {/* <Routes>
-        <Route path="/askchefgpt" element={<App />} />
-      </Routes> */}
       <div>
         <DropdownMenu />
         <h1 className='title'>ChefGPT</h1>

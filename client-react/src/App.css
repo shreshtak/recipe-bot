@@ -1,5 +1,7 @@
 * {
-  font-family: Nunito;
+  /* font-family: Nunito; */
+  font-family: "Gaegu", serif;
+  
 }
 
 
@@ -68,12 +70,12 @@ textarea:focus, input:focus{
 
 body {
   background-color: #F2F0EF;
-  font-family: 'Roboto'
+  /* font-family: 'Roboto' */
 }
 
 .chat-header {
   text-align: left;
-  padding: 20px 10px 20px 10px;
+  /* padding: 20px 10px 20px 10px; */
   display: flex;
 }
 
@@ -150,13 +152,13 @@ body {
   }
 
 .MuiMenu-root, .MuiMenuItem-root {
-  font-family: 'Nunito' !important;
+  font-family: "Gaegu", serif !important;
 }
   
 
 .user > img {
-  height: 30px; 
-  max-width: 30px;
+  height: 35px; 
+  max-width: 35px;
   border-radius: 50%;
   flex-grow: 1;
   }
@@ -193,10 +195,34 @@ body {
   border: solid 1px #9a9caa;
 }
 
+.recipe-card {
+  width: 300px; 
+  height: 250px;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+}
+
+.recipe-description {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  width: 60%;
+}
+
+.recipe-text {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #e3ded4;
+  padding: 2%;
+  border-radius: 3%;
+}
 
 .tempResponse {
   display: flex;
   align-items: flex-start;
+  text-align: left;
   margin-bottom: 15px;
   padding: 10px;
   border-radius: 10px;
@@ -219,11 +245,11 @@ body {
 }
 
 .title {
-  padding-bottom: 5px;
-  font-size: 40px;
+  font-size: 50px; 
   text-align: center;
   color: #1f0202;
-  font-weight: 800;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .welcome-1 {
@@ -292,4 +318,9 @@ body {
 
 .save-recipe-button:hover {
   background-color: #dcd7cd;
+}
+
+.view-recipe-button {
+  margin: 5px;
+  text-align: center;
 }

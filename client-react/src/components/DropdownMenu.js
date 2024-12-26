@@ -37,11 +37,11 @@ const DropdownMenu = () => {
           marginTop: '10px',
           marginLeft: '10px',
           color: '#1f0202',
-          fontFamily: 'Nunito'
+          fontFamily: "Gaegu"
         }}
         onClick={handleClick}
       >
-        Dashboard
+        Menu
       </Button>
       <Menu
         id="fade-menu"

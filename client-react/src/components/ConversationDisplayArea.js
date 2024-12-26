@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 import { ref, push } from "firebase/database";
 import database from '../firebase';
-import { getRecipeTitle } from '../pages/AskChefGPT';
+import { getRecipeTitle, getRecipeDescription } from '../pages/AskChefGPT';
 
 const ChatArea = ({ data, streamdiv, answer }) => {
 
@@ -17,12 +17,18 @@ const ChatArea = ({ data, streamdiv, answer }) => {
 
       const recipeRef = ref(database, "recipes");
       const title = await getRecipeTitle(response); 
-  
+      const description = await getRecipeDescription(response);
       push(recipeRef, {
         title: title,
         recipe: response,
-        timestamp: Date.now(),
+        description: description
       });
+
+      // use this once userIDs are created, recipes/userID ->push creates a recipe ID for each one
+      // set(ref(database, 'recipes/' + ), {
+      //   title: title,
+      //   recipe: response,
+      // });
   
       alert("Recipe saved successfully!");
     } else {

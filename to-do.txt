@@ -1,12 +1,24 @@
 to-do:
 
-- save recipe button
-    > save recipes to recipe book, display recipe book on recipe book page
-    > create option to save ai-generated recipe to recipe book 
-        - only recipes, not other messages (need validation check for that)
-- login feature
-- save recipe feature 
-
+- login feature 
+- change db push structure to be:
+    db
+    |__users
+        |__userID
+        |     |__recipes
+        |           |__title
+        |                 |__recipe
+        |                 |__timestamp
+        |           |__title
+        |                 |
+        |                 .
+        |                 .
+        |__userID
+        |     |__recipes
+        |           |
+        |           .
+        |           .
+        |           .
 recipe book:
 - ability to edit entries in the recipe book 
 
@@ -21,3 +33,7 @@ completed:
 - add menu toggle button
     > chat ("Ask Chef GPT"...?)
     > "saved recipes" (choose name later)
+- save recipe button
+    > save recipes to recipe book, display recipe book on recipe book page
+    > create option to save ai-generated recipe to recipe book 
+        - only recipes, not other messages (need validation check for that)
