@@ -4,6 +4,11 @@
   
 }
 
+button {
+  background-color: #b7b3ab;
+  border: transparent;
+  border-radius: 6px;
+}
 
 .App {
   text-align: center;
@@ -322,5 +327,49 @@ body {
 
 .view-recipe-button {
   margin: 5px;
+  margin-top: 20px;
   text-align: center;
+}
+
+.recipe-book {
+  margin-bottom: 5px;
+}
+
+.recipe-page-back {
+  margin: 0 auto; 
+  margin-bottom: 2%;
+  display: block;
+  background-color: #b7b3ab;
+  border-color: transparent;
+  border-radius: 4px;
+  height: 3%;
+  width: 5%;
+}
+
+.signup-form {
+  text-align: center;
+  font-size: larger;
+}
+
+.signup-button {
+  height: 4%;
+  width: 7%;
+  margin: 1%;
+}
+
+.logout-button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 15%;
+  height: 20%;
+  width: 10%;
+  font-size: 25px;
+  background-color: #b7b3ab;
+  border: transparent;
+  border-radius: 6px;
+}
+
+.error-message {
+  color: red;
+  font-size: smaller;
 }

@@ -20,7 +20,11 @@ to-do:
         |           .
         |           .
 recipe book:
-- ability to edit entries in the recipe book 
+- ability to delete entries in the recipe book 
+
+recipe page: 
+- not loading, check whether id is being correctly passed via params
+- check fetch of data, if recipe is being populated
 
 completed:
 

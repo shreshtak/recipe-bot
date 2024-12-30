@@ -5,18 +5,38 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import '../App.css'
-import database from '../firebase';
+import database, {auth} from '../firebase';
 import {ref, onValue} from "firebase/database";
-import RecipePage from './RecipePage';
 import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from "firebase/auth";
 
 
 function RecipeBook() {
   const [recipes, setRecipes] = useState([])
   const navigate = useNavigate();
+  const [userEmail, setUserEmail] = useState(null); // Store user email
 
+  // Fetch user email
   useEffect(() => {
-    const recipesRef = ref(database, "recipes");
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Replace dots in email to match Firebase key structure
+        const encodedEmail = user.email.replace(/\./g, "_");
+        setUserEmail(encodedEmail);
+      } else {
+        setUserEmail(null); // No user logged in
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup subscription
+  }, []);
+
+  // Fetch user's recipes
+  useEffect(() => {
+    if (!userEmail) return;
+
+    const recipesRef = ref(database, `users/${userEmail}/recipes`);
+
     onValue(recipesRef, (snapshot) => {
       const data = snapshot.val();
 
@@ -31,7 +51,7 @@ function RecipeBook() {
         setRecipes([]); // If no data exists, set to an empty array
       }
     });
-  }, []);
+  }, [userEmail]); // Refetch recipes when userEmail changes
 
 
   return (
@@ -46,7 +66,7 @@ function RecipeBook() {
           <Grid2 item xs={12} sm={6} md={4} key={index}>
             <Card 
               className="recipe-card"
-              style={{fontFamily: "Gaegu"}}
+              style={{fontFamily: "Gaegu", backgroundColor: "#e3ded4"}}
             >
               <CardContent>
                 <Typography variant="h5" component="h2" style={{ fontFamily: "Gaegu, serif" }}>

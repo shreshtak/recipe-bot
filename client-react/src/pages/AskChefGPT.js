@@ -137,7 +137,7 @@ const AskChefGPT = () => {
     const chatData = {
       chat: `You're a helpful cooking assistant. If the prompt is not related to recipes and cooking, do not answer \
       the prompt and tell the user to submit a cooking-related prompt instead. Answer the following in a culinary context: \
-      ${inputRef.current.value}. Respond in a friendly tone, while using professional cooking terminology.`,
+      ${inputRef.current.value}. Respond in a friendly and casual tone, while using professional cooking terminology.`,
       history: data
     };
 

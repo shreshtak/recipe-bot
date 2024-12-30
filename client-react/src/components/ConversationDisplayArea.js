@@ -1,36 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Markdown from 'react-markdown';
 import userIcon from '../assets/user-icon.png';
 // TODO: Consider replacing chatbotIcon with its own distinct icon.
 import chatbotIcon from '../assets/chef-icon.png'
 import { Button } from 'react-bootstrap';
-import { useState } from 'react';
-
-import { ref, push } from "firebase/database";
-import database from '../firebase';
+import { onAuthStateChanged } from "firebase/auth";
+import { ref, push, set } from "firebase/database";
+import database, {auth} from '../firebase';
 import { getRecipeTitle, getRecipeDescription } from '../pages/AskChefGPT';
 
 const ChatArea = ({ data, streamdiv, answer }) => {
+  const [userEmail, setUserEmail] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Encode email to replace '.' with '_' for Firebase keys
+        setUserEmail(user.email.replace(/\./g, "_"));
+      } else {
+        setUserEmail(null);
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   const saveToRecipeBook = async (response) => {
+
     if (isCookingRecipe(response)) {
+      try {
+        const title = await getRecipeTitle(response);
+        const description = await getRecipeDescription(response);
+        const timestamp = new Date().toISOString();
 
-      const recipeRef = ref(database, "recipes");
-      const title = await getRecipeTitle(response); 
-      const description = await getRecipeDescription(response);
-      push(recipeRef, {
-        title: title,
-        recipe: response,
-        description: description
-      });
+        const recipeRef = ref(
+          database,
+          `users/${userEmail}/recipes/`
+        );
 
-      // use this once userIDs are created, recipes/userID ->push creates a recipe ID for each one
-      // set(ref(database, 'recipes/' + ), {
-      //   title: title,
-      //   recipe: response,
-      // });
-  
-      alert("Recipe saved successfully!");
+        // Push a new recipe under a unique ID
+        const newRecipeRef = push(recipeRef);
+
+        // Save recipe data to the database
+        await set(newRecipeRef, {
+          id: newRecipeRef.key, // Store the unique ID
+          title,
+          recipe: response,
+          description,
+          timestamp,
+        });
+
+        alert("Recipe saved successfully!");
+      } catch (error) {
+        console.error("Error saving recipe:", error);
+        alert("Failed to save the recipe. Please try again.");
+      }
     } else {
       alert("This response is not a valid cooking recipe.");
     }
