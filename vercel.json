@@ -3,7 +3,7 @@
     "builds": [
       {
         "src": "client-react/package.json",
-        "use": "@vercel/vite",
+        "use": "@vercel/static-build",
         "config": {
           "root": "client"
         }
