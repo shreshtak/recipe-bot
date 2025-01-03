@@ -386,7 +386,7 @@ body {
   border-radius: 6px;
 }
 
-.signup-button {
+.signup-button:hover {
   background-color: #888378;
 }
 
