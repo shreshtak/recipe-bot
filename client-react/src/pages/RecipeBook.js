@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DropdownMenu from '../components/DropdownMenu';
-import Grid2 from '@mui/material/Grid2';
+import {Grid2} from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
