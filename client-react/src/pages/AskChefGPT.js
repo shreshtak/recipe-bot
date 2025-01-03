@@ -11,7 +11,7 @@ import MessageInput from '../components/MessageInput.js';
 import DropdownMenu from '../components/DropdownMenu.js';
 
 /** Host URL */
-const host = "http://localhost:9000"
+const host = import.meta.env.VITE_APP_BACKEND_URL || "http://localhost:9000"
 
 /** Function to get the recipe title using Gemini API. */
 export const getRecipeTitle = async (recipe) => {
