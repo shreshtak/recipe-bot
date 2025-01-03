@@ -1,8 +1,6 @@
 to-do:
 
 recipe book:
-- ability to delete entries in the recipe book 
-- add fb auth
 - add MFA?
 - add pictures, visual additions
 
@@ -23,3 +21,4 @@ completed:
         - only recipes, not other messages (need validation check for that)
 - add email/pass auth
 - add google auth
+- ability to delete entries in the recipe book 

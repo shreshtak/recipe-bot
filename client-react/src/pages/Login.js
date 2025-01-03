@@ -8,6 +8,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('')
 
     const onLogin = (e) => {
         e.preventDefault();
@@ -22,6 +23,7 @@ const Login = () => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage)
+            setErrorMessage(errorMessage)
         });
 
     }
@@ -75,7 +77,11 @@ const Login = () => {
                                     placeholder="Password" 
                                     style={{margin: "1%"}}                  
                                 />
-                            </div>  
+                            </div> 
+
+                            {errorMessage != null ? (
+                                <p className='error-message'>{errorMessage}</p>
+                            ): null} 
 
                             <button
                                 type="login" 

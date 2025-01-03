@@ -131,7 +131,7 @@ function RecipeBook() {
             ))}
           </Grid2>
         )}
-        <button onClick={() => navigate("/askchefgpt")} style={{marginTop: "2%"}}> Add recipe </button> 
+        <button onClick={() => navigate("/askchefgpt")} className='add-recipe-btn'> Add recipe </button> 
       </div>
 
       <Dialog
@@ -140,17 +140,16 @@ function RecipeBook() {
         keepMounted
         onClose={handleCloseDialog}
         aria-describedby='alert-dialog-slide-description'
-        style={{fontFamily: "Gaegu"}}
       >
-        <DialogTitle>{'Confirm Recipe Deletion'}</DialogTitle>
+        <DialogTitle sx={{ fontFamily: 'Gaegu, serif' }}>{'Remove this recipe?'}</DialogTitle>
         <DialogContent>
-          <DialogContentText id='alert-dialog-slide-description'>
-            Remove this recipe? This action cannot be undone.
+          <DialogContentText sx={{ fontFamily: 'Gaegu, serif' }} id='alert-dialog-slide-description'>
+            This action cannot be undone.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Cancel</Button>
-          <Button onClick={confirmRemoveRecipe}>Remove</Button>
+          <Button sx={{ fontFamily: 'Gaegu, serif' }} onClick={handleCloseDialog}>Cancel</Button>
+          <Button sx={{ fontFamily: 'Gaegu, serif' }} onClick={confirmRemoveRecipe}>Remove</Button>
         </DialogActions>
       </Dialog>
     </div>

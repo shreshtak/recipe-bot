@@ -237,7 +237,8 @@ const AskChefGPT = () => {
     <div>
       <div>
         <DropdownMenu />
-        <h1 className='title'>ChefGPT</h1>
+        <h1 className='title'>Ask ChefGPT!</h1>
+        <h4 style={{textAlign: 'center', marginTop: '0'}}>Ask ChefGPT for creative recipes to add to your recipe book!</h4>
       </div>
       <center>
         <div className="chat-app">
