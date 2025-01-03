@@ -6,9 +6,9 @@ import { Routes, Route } from 'react-router-dom';
 import '../App.css';
 
 /** Import necessary components. */
-import ConversationDisplayArea from '../components/ConversationDisplayArea.js';
-import MessageInput from '../components/MessageInput.js';
-import DropdownMenu from '../components/DropdownMenu.js';
+import ConversationDisplayArea from '../components/ConversationDisplayArea.jsx';
+import MessageInput from '../components/MessageInput.jsx';
+import DropdownMenu from '../components/DropdownMenu.jsx';
 
 /** Host URL */
 const host = import.meta.env.VITE_APP_BACKEND_URL || "http://localhost:9000"
