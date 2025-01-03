@@ -7,30 +7,16 @@
         "config": {
           "root": "client"
         }
-      },
-      {
-        "src": "server-python/requirements.txt",
-        "use": "@vercel/python",
-        "config": {
-          "maxDuration": 10,
-          "builds": [
-            {
-              "src": "server-python/app.py",
-              "use": "@vercel/python"
-            }
-          ]
-        }
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
         "dest": "/client/$1"
-      },
-      {
-        "src": "/api/(.*)",
-        "dest": "/server-python/app.py"
       }
-    ]
+    ],
+    "ignore": [
+        "server-python"
+      ]
   }
   
