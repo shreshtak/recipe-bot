@@ -11,11 +11,10 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login />} /> 
         <Route path="/askchefgpt" element={<AskChefGPT />} />
         <Route path="/recipebook" element={<RecipeBook />} />
-        <Route path="/recipe/:id" element={<RecipePage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/recipe/:id" element={<RecipePage />} /> 
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>
