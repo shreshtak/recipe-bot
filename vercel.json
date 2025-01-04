@@ -8,5 +8,6 @@
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" } 
-  ]
+  ],
+  "rootDirectory": "client-react" 
 }
