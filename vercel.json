@@ -1,32 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "client/package.json", 
-      "use": "@vercel/static-build",
-      "config": {
-        "root": "client"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/favicon.ico",
-      "dest": "/client/dist/favicon.ico"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/dist/$1"
-    },
-    {
-      "src": "/stream",
-      "dest": "https://ask-chefgpt-3fff2bf38698.herokuapp.com/stream"
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/client/dist/index.html"
+      "destination": "/client/$1" 
     }
   ]
 }
