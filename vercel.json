@@ -17,6 +17,10 @@
     {
       "src": "/(.*)",
       "dest": "/client/dist/$1"  
+    },
+    {
+      "src": "/stream",
+      "dest": "https://ask-chefgpt-3fff2bf38698.herokuapp.com/stream"
     }
   ]
 }
