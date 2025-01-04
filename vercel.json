@@ -5,7 +5,7 @@
       "src": "client/package.json", 
       "use": "@vercel/static-build",
       "config": {
-        "root": "client" 
+        "root": "client"
       }
     }
   ],
@@ -16,11 +16,17 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/$1"  
+      "dest": "/client/dist/$1"
     },
     {
       "src": "/stream",
       "dest": "https://ask-chefgpt-3fff2bf38698.herokuapp.com/stream"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/client/dist/index.html"
     }
   ]
 }
