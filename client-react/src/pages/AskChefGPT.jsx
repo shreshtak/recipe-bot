@@ -1,7 +1,5 @@
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
 import { flushSync } from 'react-dom';
-import { Routes, Route } from 'react-router-dom';
 
 import '../App.css';
 

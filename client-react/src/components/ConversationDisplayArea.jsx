@@ -3,7 +3,6 @@ import Markdown from 'react-markdown';
 import userIcon from '../assets/user-icon.png';
 // TODO: Consider replacing chatbotIcon with its own distinct icon.
 import chatbotIcon from '../assets/chef-icon.png'
-import { Button } from 'react-bootstrap';
 import { onAuthStateChanged } from "firebase/auth";
 import { ref, push, set } from "firebase/database";
 import database, {auth} from '../firebase';
