@@ -6,7 +6,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log("In index jsx file")
 root.render(
   <React.StrictMode>
     <BrowserRouter>
