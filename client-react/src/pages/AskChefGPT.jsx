@@ -25,6 +25,8 @@ export const getRecipeTitle = async (recipe) => {
     "Content-Type": "application/json",
   };
 
+  console.log("Backend URL:", host); // Add this line
+  
   const response = await fetch(`${host}/stream`, {
     method: 'POST',
     headers: headerConfig,
