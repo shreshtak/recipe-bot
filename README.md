@@ -1,6 +1,6 @@
 # Ask ChefGPT!
 
-## Ask ChefGPT is a web application built using a React + Vite, Flask, Gemini AI, and Firebase technologies to create an application to learn and save simple and easy recipes!
+## Ask ChefGPT is a web application built using a React + Vite, Flask, Gemini AI, and Firebase technologies to facilitate learning to cook as a beginner! Find and save unique and simple recipes that cater to your constraints and skillset using Ask ChefGPT.
 
 ## Run the app
 
